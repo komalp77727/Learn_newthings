@@ -1,0 +1,29 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "firstName": "Komal",
+      "lastName": "Patil",
+      "email": "komal77727@gmail.com",
+      "class": "Graduate"
+    },
+    {
+      "id": 2,
+      "firstName": "Komal",
+      "lastName": "Patil",
+      "email": "kpati017@gmail.com",
+      "class": "masters"
+    },
+    {
+      "id": 3,
+      "firstName": "Abhi",
+      "lastName": "Kadam",
+      "email": "abhi@gmail.com",
+      "class": "Mech"
+    }
+  ],
+  "comments": [],
+  "profile": {
+    "name": "typicode"
+  }
+}
