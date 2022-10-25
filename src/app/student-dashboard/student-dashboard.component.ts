@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder,FormGroup} from '@angular/forms'
+import {FormBuilder,FormGroup, Validators} from '@angular/forms'
 import { ApiService } from '../shared/api.service';
 import { StudentModel } from './student-dashboard.model';
 
@@ -12,16 +12,16 @@ export class StudentDashboardComponent implements OnInit {
   formValue!: FormGroup;
   studentModelObj : StudentModel = new StudentModel;
   studentData: any;
-  showAdd!: boolean;
-  showUpdate!: boolean;
+  public show:boolean = false;
+  
   constructor(private formbuilder:FormBuilder,private api:ApiService) { }
 
   ngOnInit(): void {
     this.formValue = this.formbuilder.group({
-      firstName:[''],
-      lastName:[''],
-      email:[''],
-      class:[''],
+      firstName:['',[Validators.required]],
+      lastName:['',[Validators.required]],
+      email:['',[Validators.required]],
+      class:['',[Validators.required]],
      
     })
     this.getAllStudents();
@@ -29,10 +29,10 @@ export class StudentDashboardComponent implements OnInit {
     }
     clickAddStudent(){
       this.formValue.reset();
-      this.showAdd= true;
-      this.showUpdate= false;
+     
   }
 postStudentDetails(){
+  this.show = false
   this.studentModelObj.firstName = this.formValue.value.firstName;
   this.studentModelObj.lastName = this.formValue.value.lastName;
   this.studentModelObj.email = this.formValue.value.email;
@@ -65,8 +65,7 @@ deleteStudent(stu:any){
   this.getAllStudents();
 }
 onEdit(stu:any){
-  this.showAdd=false;
-  this.showUpdate=true;
+ 
   console.log(stu)
   this.studentModelObj.id = stu.id;
   this.formValue.controls['firstName'].setValue(stu.firstName);
@@ -76,6 +75,7 @@ onEdit(stu:any){
 
 }
 updateStudentDetails(){
+  this.show= true
   this.studentModelObj.firstName = this.formValue.value.firstName;
   this.studentModelObj.lastName = this.formValue.value.lastName;
   this.studentModelObj.email = this.formValue.value.email;

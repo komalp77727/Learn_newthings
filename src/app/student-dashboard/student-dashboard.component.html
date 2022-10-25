@@ -64,8 +64,8 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" id="cancel" data-bs-dismiss="modal">Close</button>
-          <button type="button" (click)="postStudentDetails()" class="btn btn-primary">Add</button>
-          <button type="button" (click)="updateStudentDetails()" class="btn btn-primary">Update</button>
+          <button type="button" (click)="postStudentDetails()"  *ngIf="show" class="btn btn-primary">Add</button>
+          <button type="button" (click)="updateStudentDetails()"*ngIf="!show" class="btn btn-primary">Update</button>
         </div>
       </div>
     </div>
